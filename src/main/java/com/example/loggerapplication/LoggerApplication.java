@@ -1,5 +1,7 @@
 package com.example.loggerapplication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -7,9 +9,13 @@ import com.example.loggerapplication.component.DemoBean;
 
 @SpringBootApplication
 public class LoggerApplication {
+    public static final Logger logger = LoggerFactory.getLogger(LoggerApplication.class);
+
     public static void main(String[] args) {
-        System.out.println("Welcome to Spring Boot");
+        logger.debug("Welcome to Spring Boot");
         ApplicationContext context = SpringApplication.run(LoggerApplication.class, args);
-        System.out.println("Context: " + context.getBean(DemoBean.class));
+        logger.debug("Context: " + context.getBean(DemoBean.class));
+        logger.debug("Application started successfully.");
+        logger.debug("\n*** Example using @AutoWired annotation on property ***");
     }
 }
